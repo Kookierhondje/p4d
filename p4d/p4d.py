@@ -31,8 +31,6 @@ try:
     long
 except NameError:
     long = int
-
-
 ########################################################################
 ## FFI Initilization
 ########################################################################
@@ -528,6 +526,7 @@ class py4d_cursor(object):
                 #milliseconds from midnight
                 longval = self.lib4d_sql.fourd_field_long(self.result, col)
                 durationval = timedelta(milliseconds=longval[0])
+                print(durationval)
                 midnight = datetime(1, 1, 1)  #we are going to ignore the date anyway
                 timeval = midnight + durationval
                 row.append(timeval.time())
