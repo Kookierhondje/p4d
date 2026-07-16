@@ -1,7 +1,17 @@
+[build-system]
+requires = [
+    "setuptools>=68",
+    "wheel",
+    "cffi"
+]
+build-backend = "setuptools.build_meta"
 [project]
 name = "p4d"
-version = "0.1.0"
-description = "Add your description here"
+version = "1.8.1"
+description = "Python Database API 2.0 compliant driver for the 4D database server"
+authors = [
+    {name = "Gwyn!", email = "Gwyn@cyberboog.com"},
+]
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
