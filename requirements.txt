@@ -1,2 +1,1 @@
 cffi
-python-dateutil

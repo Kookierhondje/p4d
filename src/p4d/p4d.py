@@ -1,7 +1,6 @@
 import os, sys, binascii
 from cffi import FFI
 from cffi.verifier import Verifier
-from dateutil import parser
 from datetime import datetime, timedelta, time, date
 from collections import defaultdict
 import time as timemod
@@ -518,7 +517,6 @@ class py4d_cursor(object):
                                            int(output[8:10]), int(output[11:13]),
                                            int(output[14:16]), int(output[17:19]),
                                            int(output[20:23])*1000)
-                        #dateval = parser.parse(output)
                     except:
                         dateval = None
                 row.append(dateval)
