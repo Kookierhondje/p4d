@@ -1,5 +1,5 @@
 # p4d
-p4d is a Python Database API 2.0 compliant driver for the 4D (4th Dimension) database server. As such, usage should be familiar to anyone who has used any python database modules before. This module is based off of a C library provided by 4D, and integrated with Python using CFFI. As such, installation of this module does require CFFI.
+p4d is a Python Database API 2.0 compliant driver for the 4D (4th Dimension) database server.
 
 ## Changes
 v2.0 2026-07-22:
