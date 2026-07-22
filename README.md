@@ -2,6 +2,10 @@
 p4d is a Python Database API 2.0 compliant driver for the 4D (4th Dimension) database server. As such, usage should be familiar to anyone who has used any python database modules before. This module is based off of a C library provided by 4D, and integrated with Python using CFFI. As such, installation of this module does require CFFI.
 
 ## Changes
+v2.0 2026-07-22:
+- The library will no longer error out if given a duration greater than 1 day or negative time. It just passes this as a blank time instead. Is this a good change? ...? I leave this unanswered.
+- Giant rewrite to make the library line up more with how a usual DB API 2 library should look like. Fixed a few bugs in the process. May have let in more.
+
 v1.8 2023-01-13:
 
  - Fix datatype in C library to properly handle characters >128
