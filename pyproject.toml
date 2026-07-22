@@ -1,19 +1,18 @@
 [build-system]
-requires = [
-    "setuptools>=68",
-    "wheel",
-    "cffi"
-]
+requires = [ "setuptools>=83", "wheel", "cffi>=2.1.0" ]
 build-backend = "setuptools.build_meta"
+
 [project]
 name = "p4d"
-version = "1.8.1"
+version = "2.0.0"
 description = "Python Database API 2.0 compliant driver for the 4D database server"
-authors = [
-    {name = "Gwyn!", email = "Gwyn@cyberboog.com"},
-]
+authors = [{name = "Jerry", email = "Jerry@cyberboog.com"}]
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = [
-    "cffi>=2.1.0",
-]
+dependencies = ["cffi>=2.1.0"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
