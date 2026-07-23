@@ -322,7 +322,9 @@ class Cursor:
             elif field_type == self._lib.VK_DURATION:
                 value = self._lib.fourd_field_long(self._result, column)
                 duration = timedelta(milliseconds=value[0])
-                row.append((datetime.min + duration).time())
+                # Is this good? Maybe this SHOULD be an error...
+                max_durr = timedelta(days=1) - timedelta(microseconds=1)
+                row.append((datetime.min + max(duration, max_durr)).time())
             elif field_type in (self._lib.VK_BLOB, self._lib.VK_IMAGE):
                 field = self._lib.fourd_field(self._result, column)
                 if field == self._ffi.NULL:
