@@ -324,7 +324,7 @@ class Cursor:
                 duration = timedelta(milliseconds=value[0])
                 # Is this good? Maybe this SHOULD be an error...
                 max_durr = timedelta(days=1) - timedelta(microseconds=1)
-                row.append((datetime.min + max(duration, max_durr)).time())
+                row.append((datetime.min + max(duration, max_durr)).time()) # Show him the clamps, Clamps - Don bot
             elif field_type in (self._lib.VK_BLOB, self._lib.VK_IMAGE):
                 field = self._lib.fourd_field(self._result, column)
                 if field == self._ffi.NULL:
