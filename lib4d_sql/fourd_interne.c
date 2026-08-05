@@ -449,7 +449,13 @@ int get(const char* msg,const char* section,char *valeur,int max_length)
 			fin--;
 		#endif
 	}
-	
+	if (fin - loc >= max_length) {
+    fprintf(stderr,
+            "BUFFER OVERFLOW: section=%s length=%ld max=%d\n",
+            section,
+            (long)(fin - loc),
+            max_length);
+	}
 	_snprintf_s(valeur,max_length,fin-loc,"%s",loc);
 	valeur[fin-loc]=0;
 	//printf("La section %s contient '%s'\n",section,valeur);
@@ -911,36 +917,32 @@ char *_serialize(char *data,unsigned int *size, FOURD_TYPE type, void *pObj)
 		}
 	}
 	return data;
-}void Free(void *p)
-{
+}
+void Free(void *p) {
 	if(p) {
 		free(p);
 		p=NULL;
 	}
 }
-void FreeFloat(FOURD_FLOAT *p)
-{
+void FreeFloat(FOURD_FLOAT *p) {
 	if(p) {
 		Free(p->data);
 		Free(p); 
 	}
 }
-void FreeString(FOURD_STRING *p)
-{
+void FreeString(FOURD_STRING *p) {
 	if(p) {
 		Free(p->data);
 		Free(p); 
 	}
 }
-void FreeBlob(FOURD_BLOB *p)
-{
+void FreeBlob(FOURD_BLOB *p) {
 	if(p) {
 		Free(p->data);
 		Free(p);
 	}
 }
-void PrintData(const void *data,unsigned int size)
-{
+void PrintData(const void *data,unsigned int size) {
 	const char *d=data;
 	unsigned int i=0;
 	if(size>=1)
@@ -949,8 +951,7 @@ void PrintData(const void *data,unsigned int size)
 		Printf(" 0x%X",*(char *)(d+i));
 	}
 }
-int _is_multi_query(const char *request)
-{
+int _is_multi_query(const char *request) {
 	int i=0;
 	size_t len;
 	int inCol=0;
@@ -1002,7 +1003,6 @@ int _is_multi_query(const char *request)
 						/* printf("_");*/
 					}
 				}
-				
 				break;
 			case '\'':
 				if(!inCol){
@@ -1044,7 +1044,6 @@ int _is_multi_query(const char *request)
 				}
 				break;
 		}
-		
 	}
 	return 0;
 }
