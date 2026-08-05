@@ -562,11 +562,11 @@ int traite_header_response(FOURD_RESULT* state)
 	}
 	//get Column-Types
 	{
-		char column_type[2048];
+		char column_type[8192];
 		char *column=NULL;
 		unsigned int num=0;
 		//char *context=NULL;
-		if(get(header,"Column-Types",column_type,2048)==0) {
+		if(get(header,"Column-Types",column_type,8192)==0) {
 			Printf("Column-Types => '%s'\n",column_type);
 			column = strtok_s(column_type, " ",&context);
 			if(column!=NULL)
@@ -582,7 +582,7 @@ int traite_header_response(FOURD_RESULT* state)
 				num++;
 				column = strtok_s(NULL, " ",&context);
 			}while(column!=NULL);
-			Printf("Fin de la lecture des colonnes\n");
+			//Printf("Fin de la lecture des colonnes\n"); I don't know what this french does. I guess the columns are done with their lecture now. 
 		}
 	}
 	//get Column-Aliases-Base64
@@ -624,7 +624,7 @@ int traite_header_response(FOURD_RESULT* state)
 		column_alias=calloc(sizeof(char), base64_size+5); //I always like to give a few bytes wiggle
 		
 		//char *context=NULL;
-		if(get(header,"Column-Aliases-Base64",column_alias,base64_size)==0) {
+		if(get(header,"Column-Aliases-Base64",column_alias,base64_size+5)==0) {
 			/* delete the last espace char if exist */
 			if(column_alias[strlen(column_alias)-1]==' ') {
 				column_alias[strlen(column_alias)-1]=0;
@@ -679,9 +679,9 @@ int traite_header_response(FOURD_RESULT* state)
 	}
 	//Column-Updateability
 	{
-		char updateability[250];
+		char updateability[512];
 		//state->updateability=1;
-		if(get(header,"Column-Updateability",updateability,250)==0) {
+		if(get(header,"Column-Updateability",updateability,512)==0) {
 			state->updateability=(strstr(updateability,"Y")!=NULL);
 			Printf("Column-Updateability:%s\n",updateability);
 			Printf("Column-Updateability:%d\n",state->updateability);
