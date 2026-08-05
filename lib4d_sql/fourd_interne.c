@@ -582,7 +582,7 @@ int traite_header_response(FOURD_RESULT* state)
 				num++;
 				column = strtok_s(NULL, " ",&context);
 			}while(column!=NULL);
-			//Printf("Fin de la lecture des colonnes\n"); I don't know what this french does. I guess the columns are done with their lecture now. 
+		Printf("Fin de la lecture des colonnes\n");// I don't know what this french does. I guess the columns are done with their lecture now. 
 		}
 	}
 	//get Column-Aliases-Base64
@@ -648,7 +648,7 @@ int traite_header_response(FOURD_RESULT* state)
 				num++;
 				alias = strtok_s(NULL, "\r",&context);
 			}while(alias!=NULL);
-			Printf("Fin de la lecture des alias\n");
+		Printf("Fin de la lecture des alias\n");
 		}
 		free(column_alias);
 	}
@@ -720,7 +720,7 @@ int traite_header_response(FOURD_RESULT* state)
 int receiv_check(FOURD *cnx,FOURD_RESULT *state)
 {
 	socket_receiv_header(cnx,state);
-	printf("%s\n", state->header);
+	//printf("%s\n", state->header);
 	if(traite_header_response(state)!=0) {
 		Printferr("Error in traite_header_response\n");
 		cnx->status=state->status;
