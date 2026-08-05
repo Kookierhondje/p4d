@@ -720,6 +720,7 @@ int traite_header_response(FOURD_RESULT* state)
 int receiv_check(FOURD *cnx,FOURD_RESULT *state)
 {
 	socket_receiv_header(cnx,state);
+	printf("%s\n", state->header);
 	if(traite_header_response(state)!=0) {
 		Printferr("Error in traite_header_response\n");
 		cnx->status=state->status;
