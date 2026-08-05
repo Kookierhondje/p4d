@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "p4d"
-version = "2.0.0"
+version = "2.1.0"
 description = "Python Database API 2.0 compliant driver for the 4D database server"
 authors = [{name = "Jerry", email = "Jerry@cyberboog.com"}]
 readme = "README.md"
