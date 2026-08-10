@@ -2,6 +2,9 @@
 p4d is a Python Database API 2.0 compliant driver for the 4D (4th Dimension) database server.
 
 ## Changes
+v2.1 2026-07-30:
+- Greatly increased the size of many of the buffers in the interne file so the library no longer hits a buffer overflow when asking for more than 125 columns one can probably pull at least 250 columns at a time now.
+
 v2.0 2026-07-22:
 - The library will no longer error out if given a duration greater than 1 day or negative time. It just passes this as a blank time instead. Is this a good change? ...? I leave this unanswered.
 - Giant rewrite to make the library line up more with how a usual DB API 2 library should look like. Fixed a few bugs in the process. May have let in more.
