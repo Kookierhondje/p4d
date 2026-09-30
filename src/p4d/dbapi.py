@@ -249,7 +249,7 @@ class Cursor:
             try:
                 python_type = python_types[type_code]
             except KeyError:
-                raise OperationalError(f"Unrecognized 4D type: {type_code} in column: {column} with name: {name}")
+                raise OperationalError(f"Unrecognized 4D type: {type_code} in column: {column} with name: {ffi.string(name)}")
             description.append((self._ffi.string(name).decode("utf-8"), python_type, None, None, None, None, None))
         self._description = description
     #----------------------------------------------------------------------
